@@ -16,13 +16,6 @@ cols <- sapply(PIB, function(`PIB em US$ trilhões`) any(grepl(",", `PIB em US$ 
 PIB[cols] <- lapply(PIB[cols], function(`PIB em US$ trilhões`) as.numeric(sub(",", ".", `PIB em US$ trilhões`)))
 PIB$País <- factor(as.character(PIB$País), levels = PIB$País[order(PIB$`PIB em US$ trilhões`)])
 
-#grafico de pontos
-ggplot(PIB) +
-  ggtitle("20 Maiores Economias") +
-  aes(y = País, x = `PIB em US$ trilhões`, color = País) +
-  geom_point(size = 4) +
-  guides(color = "none")
-
 #grafico de barras
 ggplot(PIB) +
   ggtitle("20 Maiores Economias") +
